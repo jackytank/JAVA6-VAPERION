@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous" defer></script>
+    <!-- font awsome -->
+    <script src="https://kit.fontawesome.com/e136359f35.js" crossorigin="anonymous" defer></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+    <link rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}">
+    <script src="/js/script.js" th:src="@{/js/script.js}" defer></script>
+</head>
+
+<body>
+    <nav th:replace="~{/user/component/_header::header}"></nav>
+
+    <main class="container-fluid mt-5" role="main">
+        <section class="vh-100">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col col-xl-10">
+                        <div class="card" style="border-radius: 1rem;">
+                            <div class="row g-0">
+                                <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp" alt="login form"
+                                        class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                                </div>
+                                <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                    <div class="card-body p-4 p-lg-5 text-black">
+                                        <p class="mb-4 text-danger fw-bold">[(${message})]</p>
+
+                                        <form class="needs-validation" th:action="@{/auth/login}" method="post" novalidate>
+                                            <!-- <div class="d-flex align-items-center mb-3 pb-1">
+                                                <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                                <span class="h1 fw-bold mb-0">Logo</span>
+                                            </div> -->
+
+                                            <h4 class="fw-normal mb-2 pb-3 fw-bold" style="letter-spacing: 1px;">Sign into your account</h4>
+
+                                            <div class="form-outline mb-3">
+                                                <label class="form-label" for="form2Example17">Email address</label>
+                                                <input type="email" id="form2Example17" name="username" class="form-control  shadow-none" required="required" />
+                                                <div class="invalid-feedback">
+                                                    Please enter email.
+                                                </div>
+                                            </div>
+
+                                            <div class="form-outline mb-3">
+                                                <label class="form-label" for="form2Example27">Password</label>
+                                                <input type="password" id="form2Example27" name="password" class="form-control shadow-none"
+                                                    required="required" />
+                                                <div class="invalid-feedback">
+                                                    Please enter password.
+                                                </div>
+                                            </div>
+
+                                            <div class="form-outline mb-3">
+                                                <!-- Checkbox -->
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="remember" checked />
+                                                    <label class="form-check-label" for="form2Example31"> Remember me </label>
+                                                    <a class="small text-muted float-end" href="#!">Forgot password?</a>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <button class="btn btn-primary" type="submit">Login</button>
+                                            </div>
+
+
+                                            <p class="mb-2 pb-lg-2" style="color: #393f81;">Don't have an account?
+                                                <a href="#!" style="color: #393f81;">Register here</a>
+                                            </p>
+
+                                            <hr class="my-4">
+
+                                            <div class="text-center">
+                                                <p>or sign in with:</p>
+                                                <a th:href="@{/oauth2/authorization/facebook}" class="btn btn-link btn-floating mx-1">
+                                                    <i class="fab fa-facebook-f"></i>
+                                                </a>
+                                                <a th:href="@{/oauth2/authorization/google}" class="btn btn-link btn-floating mx-1">
+                                                    <i class="fab fa-google"></i>
+                                                </a>
+                                                <a th:href="@{/oauth2/authorization/github}" class="btn btn-link btn-floating mx-1">
+                                                    <i class="fab fa-github"></i>
+                                                </a>
+                                                <!-- 
+                                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                                    <i class="fab fa-twitter"></i>
+                                                </button> -->
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <nav th:replace="~{/user/component/_footer::footer}"></nav>
+
+</body>
+
+</html>
