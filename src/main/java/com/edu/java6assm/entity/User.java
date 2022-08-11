@@ -10,9 +10,11 @@ import com.edu.java6assm.model.AuthProvider;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
 @Table(name = "users")
 public class User implements Serializable {
     @Id

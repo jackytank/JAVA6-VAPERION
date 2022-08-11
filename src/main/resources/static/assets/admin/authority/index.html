@@ -1,0 +1,21 @@
+<div class="card" ng-controller="authority-ctrl">
+    <div class="card-header">AUTHORIZING</div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th ng-repeat="role in roles" class="text-center">
+                <span>{{role.id}}</span>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="acc in admins">
+            <td>{{acc.username}}</td>
+            <td ng-repeat="role in roles" class="text-center">
+                <input ng-checked="authority_of(acc,role)" ng-click="authority_changed(acc,role)" type="checkbox">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

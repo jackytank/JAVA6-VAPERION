@@ -1,0 +1,25 @@
+body {
+	background-color: white;
+	color: black;
+}
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+/* 													for dark mode feature*/
+.dark-mode {
+	background-color: rgb(24, 26, 27) !important;
+	color: white !important;
+}
+
+.btn-toggle {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	overflow: hidden;
+}

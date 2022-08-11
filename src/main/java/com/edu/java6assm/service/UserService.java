@@ -1,40 +1,35 @@
 package com.edu.java6assm.service;
 
-import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import javax.mail.MessagingException;
 
 import com.edu.java6assm.entity.User;
-import com.edu.java6assm.model.AuthProvider;
-import com.edu.java6assm.repository.UserRepository;
 
-@Service
-@Transactional
-public class UserService {
-    @Autowired
-    private UserRepository repo;
+public interface UserService {
 
-    public void processOAuthPostLogin(String username, String email, String image, String oauth2ClientName) {
-        User existAcc = repo.findByEmail(email).get();
-        if (existAcc == null) {
-            User newAcc = new User();
-            AuthProvider authProvider = AuthProvider.valueOf(oauth2ClientName.toUpperCase());
-            newAcc.setUsername(username);
-            newAcc.setEmail(email);
-            newAcc.setProvider(authProvider);
-            newAcc.setImage_url(image);
-            repo.save(newAcc);
-        }
-    }
+    Optional<User> findById(Integer id);
 
-    public void updateAuthenticationTypeOAuth(String username, String oauth2ClientName) {
-        AuthProvider authProvider = AuthProvider.valueOf(oauth2ClientName.toUpperCase());
-        repo.updateAuthenticationTypeOAuth(username, authProvider);
-    }
+    Optional<User> findByUsername(String username);
 
-    public void updateAuthenticationTypeDB(String username, String oauth2ClientName) {
-        AuthProvider authProvider = AuthProvider.valueOf(oauth2ClientName.toUpperCase());
-        repo.updateAuthenticationTypeDB(username, authProvider);
-    }
+    Optional<User> findByEmail(String email);
+
+    void save(User user);
+
+    List<User> findAll();
+
+    List<User> getAdministators();
+
+    void register(User user, String url) throws MessagingException;
+
+    void sendVerifyEmail(User user, String url) throws MessagingException;
+
+    boolean verify(String verifyCode);
+
+    void processOAuthPostLogin(String username, String email, String image, String oauth2ClientName);
+
+    void updateAuthenticationTypeOAuth(String username, String oauth2ClientName);
+
+    void updateAuthenticationTypeDB(String username, String oauth2ClientName);
 }

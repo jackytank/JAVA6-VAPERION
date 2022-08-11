@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<body>
+    <main th:object="${order}">
+        <div class="card mb-4">
+            <div class="card-header">
+                ORDER INFORMATION
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="mb-2 col-sm-4">
+                        <div>Order number:</div>
+                        <input type="text" th:field="*{id}" class="form-control" th:readonly="readonly">
+                    </div>
+                    <div class="mb-2 col-sm-4">
+                        <div>Purchaser:</div>
+                        <input type="text" th:field="*{user.username}" class="form-control" th:readonly="readonly">
+                    </div>
+                    <div class="mb-2 col-sm-4">
+                        <div>Purchase date::</div>
+                        <input type="text" th:field="*{create_date}" class="form-control" th:readonly="readonly">
+                    </div>
+                    <div class="mb-2 col-sm-4">
+                        <div>Shipping address::</div>
+                        <textarea th:field="*{address}" class="form-control" th:readonly="readonly"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                ORDER LINES
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="details:*{order_details}" th:object="${details}">
+                                <td>[[*{product.id}]]</td>
+                                <td>[[*{product.name}]]</td>
+                                <td>[[*{#numbers.formatDecimal(price,0,'COMMA',2,'POINT')}]]</td>
+                                <td>[[*{quantity}]]</td>
+                                <td>[[*{#numbers.formatDecimal(price*quantity,0,'COMMA',2,'POINT')}]]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,5 +1,7 @@
 package com.edu.java6assm.security;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,18 +23,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepo.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with email : " + email));
-        return UserPrincipal.create(user);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> user = userRepo.findByUsername(username);
+        user.orElseThrow(() -> new UsernameNotFoundException("User not found with username : " + username));
+        return user.map(CustomUserDetails::new).get();
     }
 
-    @Transactional
-    public UserDetails loadUserById(Integer id) {
-        User user = userRepo.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("User", "id", id));
-
-        return UserPrincipal.create(user);
-    }
+    // @Transactional
+    // public UserDetails loadUserById(Integer id) {
+    //     Optional<User> user = userRepo.findById(id);
+    //     user.orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
+    //     return user.map(CustomUserDetails::new).get();
+    // }
 
 }
