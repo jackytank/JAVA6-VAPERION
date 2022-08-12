@@ -6,9 +6,8 @@ import com.edu.java6assm.entity.Product;
 import com.edu.java6assm.repository.ProductRepository;
 import com.edu.java6assm.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -18,6 +17,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> findAll() {
         return repo.findAll();
+    }
+
+    @Override
+    public List<Product> findAll(Sort sort) {
+        return repo.findAll(sort);
     }
 
     @Override
@@ -50,6 +54,5 @@ public class ProductServiceImpl implements ProductService {
         List<Product> products = repo.searchProducts(query);
         return products;
     }
-
 
 }

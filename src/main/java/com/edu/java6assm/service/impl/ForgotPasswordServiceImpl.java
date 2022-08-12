@@ -52,7 +52,7 @@ public class ForgotPasswordServiceImpl implements ForgotPasswordService {
     public void sendEmail(String recipientEmail, String link) {
         MailInfo mailInfo = new MailInfo();
         mailInfo.setTo(recipientEmail);
-        mailInfo.setSubject("PaperMoneyStore - Reset password");
+        mailInfo.setSubject("TXT Vaperium - Reset password");
         String content = "<p>Hello,</p>"
                 + "<p>You have requested to reset your password.</p>"
                 + "<p>Click the link below to change your password:</p>"

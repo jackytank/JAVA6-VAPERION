@@ -2,12 +2,14 @@ package com.edu.java6assm.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
+
 import com.edu.java6assm.entity.Product;
-
-
 
 public interface ProductService {
     List<Product> findAll();
+
+    List<Product> findAll(Sort sort);
 
     Product findById(Integer id);
 

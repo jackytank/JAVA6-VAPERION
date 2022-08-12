@@ -1,8 +1,22 @@
-angular.module("shopping-cart-app").controller("search-ctrl", searchController);
+angular.module("shopping-cart-app").controller("product-ctrl", productController);
 
-function searchController($scope, $http, $interval) {
+function productController($scope, $http, $interval) {
     $scope.productList = [];
     $scope.cates = [];
+    // $scope.sortNames = ['Price (Ascending)', 'Price (Descending)'];
+    $scope.sortNames = {
+        price: [
+            { code: 'price_asc', name: 'Price (Ascending)' },
+            { code: 'price_desc', name: 'Price (Descending)' }
+        ]
+    };
+
+    $scope.sortProducts = function (sortCode) {
+        $http.get('/rest/products?sort=' + sortCode).then(res => {
+            $scope.productList = res.data;
+        });
+    };
+
 
     $scope.initialize = function () {
         $http.get('/rest/products').then(res => {

@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,8 +28,21 @@ public class ProductRestController {
     ProductService productService;
 
     @GetMapping("/rest/products")
-    public List<Product> getAll() {
-        return productService.findAll();
+    public ResponseEntity<List<Product>> getAll(@RequestParam("sort") Optional<String> sort) {
+        if (sort.isPresent()) {
+            if (sort.get().equalsIgnoreCase("all")) {
+                return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
+            }
+            if (sort.get().equalsIgnoreCase("price_asc")) {
+                return new ResponseEntity<>(productService.findAll(Sort.by("price").ascending()),
+                        HttpStatus.OK);
+            }
+            if (sort.get().equalsIgnoreCase("price_desc")) {
+                return new ResponseEntity<>(productService.findAll(Sort.by("price").descending()),
+                        HttpStatus.OK);
+            }
+        }
+        return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/rest/products/{id}")

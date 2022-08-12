@@ -32,12 +32,6 @@ function checkPasswordMatch(confirmPass) {
 const classToggle = (el, ...args) => args.map(e => el.classList.toggle(e));
 function toggleDarkmode() {
     if (document.readyState === 'complete') {
-        if (window.localStorage.getItem("dark-mode") != null) {
-            window.localStorage.setItem("dark-mode", true);
-        } else {
-            window.localStorage.removeItem("dark-mode");
-        }
-
         document.body.classList.toggle("dark-mode");
         document.querySelectorAll("thead").forEach((e) => e.classList.toggle("dark-mode"));
         document.querySelectorAll("tbody").forEach((e) => e.classList.toggle("dark-mode"));

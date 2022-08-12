@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.edu.java6assm.entity.Category;
 import com.edu.java6assm.entity.Order;
 import com.edu.java6assm.entity.Product;
 import com.edu.java6assm.entity.User;

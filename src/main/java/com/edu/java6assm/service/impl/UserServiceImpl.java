@@ -117,7 +117,7 @@ public class UserServiceImpl implements UserService {
     public void sendVerifyEmail(User user, String url) throws MessagingException {
         MailInfo mail = new MailInfo();
         mail.setTo(user.getEmail());
-        mail.setSubject("Boolean Vape - Verify your email");
+        mail.setSubject("TXT Vaperium - Verify your email");
         String content = "Dear [[name]],<br>"
                 + "Please click the link below to verify your registration:<br>"
                 + "<h3><a href=\"[[URL]]\" target=\"_self\">VERIFY</a></h3>"

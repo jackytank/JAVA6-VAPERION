@@ -6,29 +6,46 @@
 </header>
 
 <body>
-    <main class="row mb-2">
-        <div class="col-md-3 col-lg-3 col-sm-5 mb-2 mr-2 d-flex align-items-stretch" ng-repeat="p in pager.productList">
-            <div class="card">
-                <a href="{{'/product/detail/' + p.id}}">
-                    <img class="card-img-top" ng-src="{{'/assets/images/'+ p.image}}" alt="Card image">
-                </a>
-                <div class="card-body d-flex flex-column">
-                    <h4 class="card-title ">{{p.name}}</h4>
-                    <p class="card-text "><sup>đ</sup> {{p.price | number:0}}</p>
-
-                    <!-- add to cart btn -->
-                    <button ng-click="cart.add(p.id)" class="btn btn-primary mt-auto align-self-start"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-
+    <main class="mb-2">
+        <div class="row justify-content-end mb-2">
+            <div class="col-md-3">
+                <select class="form-select" aria-label="Default select example" ng-model="selectedSort" ng-change="sortProducts(selectedSort)">
+                    <option value="" disabled selected hidden>Sort by...</option>
+                    <option value="all">Relevant</option>
+                    <!-- cho chữ cái đầu viết hoa -->
+                    <optgroup label=" {{key.charAt(0).toUpperCase() + key.slice(1)}}" ng-repeat="(key,value) in sortNames">
+                        <option ng-repeat="val in value" value="{{val.code}}">{{val.name}}</option>
+                    </optgroup>
+                </select>
             </div>
         </div>
-        <div class="card-footer text-center">
-            <div class="justify-content-center btn-group btn-group-xs">
-                <button class="btn btn-secondary btn-sm" ng-click="pager.first()"> &lArr;</button>
-                <button class="btn btn-secondary btn-sm" ng-click="pager.prev()">&larr; </button>
-                <button class="btn btn-secondary btn-sm">{{pager.page+1}} of {{pager.count}}</button>
-                <button class="btn btn-secondary btn-sm" ng-click="pager.next()"> &rarr; </button>
-                <button class="btn btn-secondary btn-sm" ng-click="pager.last()">&rArr; </button>
+        <div class="row">
+            <!-- product card -->
+            <div class="col-md-3 col-lg-3 col-sm-12 mb-4 mr-2 d-flex align-items-stretch" ng-repeat="p in pager.productList">
+                <div class="card">
+                    <a href="{{'/product/detail/' + p.id}}">
+                        <img class="card-img-top img-thumbnail" ng-src="{{'/assets/images/'+ p.image}}" alt="Product image">
+                    </a>
+                    <div class="card-body d-flex flex-column">
+                        <h4 class="card-title ">{{p.name}}</h4>
+                        <p class="card-text "><sup>đ</sup> {{p.price | number:0}}</p>
+
+                        <!-- add to cart btn -->
+                        <button ng-click="cart.add(p.id)" class="btn btn-primary mt-auto align-self-start"><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- pagination -->
+            <div class="text-center">
+                <div class="justify-content-center btn-group btn-group-xs">
+                    <button class="btn btn-secondary btn-sm" ng-click="pager.first()"> &lArr;</button>
+                    <button class="btn btn-secondary btn-sm" ng-click="pager.prev()">&larr; </button>
+                    <button class="btn btn-secondary btn-sm">{{pager.page+1}} of {{pager.count}}</button>
+                    <button class="btn btn-secondary btn-sm" ng-click="pager.next()"> &rarr; </button>
+                    <button class="btn btn-secondary btn-sm" ng-click="pager.last()">&rArr; </button>
+                </div>
             </div>
         </div>
     </main>
