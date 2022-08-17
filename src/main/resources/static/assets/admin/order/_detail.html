@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header">
+        ORDER LINES
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="details in orderDetails">
+                        <td>{{details.product.id}}</td>
+                        <td>{{details.product.name}}</td>
+                        <td><sub>đ</sub> {{details.price | number:0}}</td>
+                        <td>{{details.quantity}}</td>
+                        <td><sub>đ</sub> {{details.price * details.quantity | number:0 }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

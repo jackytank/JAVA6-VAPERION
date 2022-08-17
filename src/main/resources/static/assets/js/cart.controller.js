@@ -58,9 +58,9 @@ function shoppingCartCtrl($scope, $http) {
         }
     };
     $scope.cart.loadFromLocalStorage();
-    let user = {};
-    fetch('/rest/users/' + $('#login-username').text()).then(res => res.json()).then(data => { user = data; });
-    console.log(user);
+    // let user = {};
+    // fetch('/rest/users/' + $('#login-username').text()).then(res => res.json()).then(data => { user = data; });
+    // console.log(user);
 
     $scope.order = {
         create_date: new Date(),
@@ -90,6 +90,6 @@ function shoppingCartCtrl($scope, $http) {
             });
         }
     };
-    console.log($scope.order);
+    // console.log($scope.order);
 }
 

@@ -15,7 +15,11 @@ public interface UserService {
 
     Optional<User> findByEmail(String email);
 
-    void save(User user);
+    User save(User user);
+
+    User update(User user);
+
+    void deleteByUsername(String id);
 
     List<User> findAll();
 

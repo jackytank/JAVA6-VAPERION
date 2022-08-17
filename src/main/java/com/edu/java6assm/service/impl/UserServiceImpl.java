@@ -106,7 +106,8 @@ public class UserServiceImpl implements UserService {
         user.setProvider(AuthProvider.DATABASE);
         User savedUser = userRepo.save(user);
 
-        // set role CUST to user
+        // set role CUST (Customer) to user vì nếu là người dùng bình thường đăng ký thì chỉ set
+        // role là CUST
         Optional<Role> role = roleRepo.findById("CUST");
         userRoleRepo.save(new UserRole(user, role.get()));
         sendVerifyEmail(user, url);
@@ -131,10 +132,29 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void save(User user) {
+    public User save(User user) {
         String encodedPassword = encoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        userRepo.save(user);
+        return userRepo.save(user);
+    }
+
+    @Override
+    public User update(User user) {
+        Optional<User> findUser = userRepo.findByUsername(user.getUsername());
+        if (findUser.isPresent()) {
+            if (!findUser.get().getPassword().equals(user.getPassword())) {
+                String encodedPassword = encoder.encode(user.getPassword());
+                user.setPassword(encodedPassword);
+            } else {
+
+            }
+        }
+        return userRepo.save(user);
+    }
+
+    @Override
+    public void deleteByUsername(String username) {
+        userRepo.deleteByUsername(username);
     }
 
     @Override

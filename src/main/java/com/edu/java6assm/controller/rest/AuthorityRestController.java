@@ -24,8 +24,8 @@ public class AuthorityRestController {
     }
 
     @PostMapping("/rest/authorities")
-    public UserRole post(@RequestBody UserRole auth) {
-        return userRoleService.create(auth);
+    public UserRole post(@RequestBody UserRole userRole) {
+        return userRoleService.create(userRole);
     }
 
     @DeleteMapping("/rest/authorities/{id}")

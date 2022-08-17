@@ -1,0 +1,79 @@
+<div class="card">
+    <div class="card-header">USER EDITION</div>
+    <div class="card-body">
+        <form class="form" name="myform" novalidate>
+            <input type="hidden" ng-model="form.id">
+            <div class="mb-3">
+                <label for="image">
+                    <img ng-src="{{form.image_url.startsWith('http')?form.image_url:('/assets/images/'+ (form.image_url || 'default-user.jpg'))}}"
+                        style="max-width: 20vw; max-height: 20vh;" alt="User image">
+                </label>
+            </div>
+            <div class="mb-3">
+                <label>Username:</label>
+                <input ng-model="form.username" type="text" name="username" class="form-control" required>
+                <div class="text-danger" ng-show="myform.username.$invalid">Please enter a valid username.</div>
+            </div>
+            <div class="mb-3">
+                <label>Password:</label>
+                <input ng-model="form.password" id="password" name="password" type="password" class="form-control" minlength="6" title="Min length is 6"
+                    required>
+                <button id="toggle-password" type="button" class="d-none"
+                    aria-label="Show password as plain text. Warning: this will display your password on the screen.">
+                </button>
+                <div class="text-danger" ng-show="myform.password.$invalid">Please enter a valid password.</div>
+            </div>
+            <div class="mb-3">
+                <label>Email:</label>
+                <input ng-model="form.email" ng-init="form.email='asdasasd@asdasd.asd'" name="email" type="email" class="form-control" required>
+                <div class="text-danger" ng-show="myform.email.$invalid">Please enter a valid email.</div>
+            </div>
+            <div class="mb-3">
+                <label>Phone:</label>
+                <input ng-model="form.phone" ng-init="form.phone='0374657743'" name="phone" type="tel" class="form-control" pattern="(\+84|0)\d{9,10}" required>
+                <div class="text-danger" ng-show="myform.phone.$invalid">Please enter a valid phone.</div>
+            </div>
+            <div class="mb-3">
+                <label>Image:</label>
+                <input type="file" class="form-control" id="image" onchange="angular.element(this).scope().imageChanged(this.files)" ng-model="form.image_url">
+            </div>
+            <div class="mb-3">
+                <label>Provider:</label>
+                <select ng-model="form.provider" ng-init="form.provider = form.provider || providers[0]" ng-options="option as option for option in providers"
+                    class="form-control">
+                    <!-- <option ng-repeat="p in providers" ng-value="p">{{p}}</option> -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Roles:</label>
+                <select ng-model="form.role" ng-init="form.role = form.role || roles[0].id" ng-options="option.id as option.name for option in roles"
+                    class="form-control">
+                    <!-- <option ng-repeat="p in roles" ng-value="p.id">{{p.name}}</option> -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Enabled?:</label>
+                <div class="form-control" ng-init="form.enabled=true">
+                    <label class="radio-inline">
+                        <input type="radio" ng-model="form.enabled" ng-value="true" name="enabled">Yes
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" ng-model="form.enabled" ng-value="false" name="enabled">No
+                    </label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>Verify Code:</label>
+                <input ng-model="form.verify_code" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label>Reset Pwd Token:</label>
+                <input ng-model="form.reset_pwd_token" type="text" class="form-control">
+            </div>
+            <button ng-disabled="myform.$invalid" ng-click="create()" type="submit" class="btn btn-success">Create</button>
+            <button ng-disabled="myform.$invalid" ng-click="update()" type="submit" class="btn btn-primary">Update</button>
+            <button ng-click="delete(form)" type="submit" class="btn btn-danger">Delete</button>
+            <button ng-click="reset()" type="submit" class="btn btn-secondary">Reset</button>
+        </form>
+    </div>
+</div>

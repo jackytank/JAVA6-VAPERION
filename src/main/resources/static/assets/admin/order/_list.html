@@ -1,0 +1,29 @@
+<div class="table-responsive">
+    <select class="form-select" aria-label="User select" ng-model="selectedUser" ng-init="selectedUser = users[0].username" ng-change="displayOrderByUsername(selectedUser)">
+        <option ng-repeat="user in users" value="{{user.username}}">{{user.username}}</option>
+    </select>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Order No.</th>
+                <th>Order Date</th>
+                <th>Shipping Address</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="order in orders">
+                <td>{{$index+1}}</td>
+                <td>{{order.id}}</td>
+                <td>{{order.create_date}}</td>
+                <td>{{order.address}}</td>
+                <td>
+                    <a ng-click="displayOrderDetails(order.id)" class="btn btn-secondary">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

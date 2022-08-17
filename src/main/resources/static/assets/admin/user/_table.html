@@ -6,11 +6,11 @@
 
 <div class="card">
     <div class="card-header d-flex justify-content-between">
-        <span class="float-start">PRODUCT LIST</span>
+        <span class="float-start">USER LIST</span>
         <div class="btn-group">
-            <a href="/admin/products/export-pdf" class="btn btn-secondary">PDF</a>
-            <a href="/admin/products/export-excel" class="btn btn-secondary">EXCEL</a>
-            <a href="/admin/products/export-csv" class="btn btn-secondary">CSV</a>
+            <a href="/admin/users/export-pdf" class="btn btn-secondary">PDF</a>
+            <a href="/admin/users/export-excel" class="btn btn-secondary">EXCEL</a>
+            <a href="/admin/users/export-csv" class="btn btn-secondary">CSV</a>
         </div>
 
     </div>
@@ -19,27 +19,34 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Date</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Email</th>
+                    <th>Phone</th>
                     <th>Image</th>
-                    <th>Category</th>
-                    <th>Available?</th>
+                    <th>Provider</th>
+                    <th>Enabled?</th>
+                    <th>Verify Code</th>
+                    <th>Reset PW Token</th>
+                    <th>Roles</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="item in pager.items">
                     <th>{{item.id}}</th>
-                    <th>{{item.name}}</th>
-                    <th>{{item.price|number:2}}</th>
-                    <th>{{item.create_date|date:'dd-MM-yyyy'}}</th>
-                    <th>{{item.image}}</th>
-                    <th>{{item.category.name}}</th>
-                    <th>{{item.available?'Yes':'No'}}?</th>
+                    <th>{{item.username}}</th>
+                    <th>{{item.password | limitTo: 10 }}{{item.password.length > 10 ? '...' : ''}}</th>
+                    <th>{{item.email}}</th>
+                    <th>{{item.phone}}</th>
+                    <th>{{item.image_url | limitTo: 10 }}{{item.image_url.length > 10 ? '...' : ''}}</th>
+                    <th>{{item.provider}}</th>
+                    <th>{{item.enabled?'Yes':'No'}}</th>
+                    <th>{{item.verify_code | limitTo: 10 }}{{item.verify_code.length > 10 ? '...' : ''}}</th>
+                    <th>{{item.reset_pwd_token | limitTo: 10 }}{{item.reset_pwd_token.length > 10 ? '...' : ''}}</th>
                     <th>
                         <div class="btn-group btn-group-xs">
-                            <button class="btn btn-sm btn-secondary" ng-click="edit(item)">Edit</button>
+                            <button class="btn btn-sm btn-secondary" ng-disabled="item.provider !== 'DATABASE'" ng-click="edit(item)">Edit</button>
                             <button class="btn btn-sm btn-danger" ng-click="delete(item)">Del</button>
                         </div>
                     </th>
