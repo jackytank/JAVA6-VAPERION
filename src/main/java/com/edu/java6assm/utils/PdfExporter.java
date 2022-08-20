@@ -80,7 +80,7 @@ public class PdfExporter<T> {
         cell.setBackgroundColor(CMYKColor.LIGHT_GRAY);
         cell.setPadding(5);
         // set table header font
-        Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLD);
+        Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN, 10, Font.BOLD);
         font.setColor(CMYKColor.WHITE);
         // create table header data
         for (String str : headers) {
@@ -89,6 +89,7 @@ public class PdfExporter<T> {
         }
 
         // create table data
+        Font tableCellFont = FontFactory.getFont(FontFactory.TIMES_ROMAN, 10, Font.NORMAL);
         for (T item : list) {
             if (item instanceof User) {
                 User user = (User) item;
@@ -99,8 +100,8 @@ public class PdfExporter<T> {
                 table.addCell(user.getPhone());
                 table.addCell(user.getImage_url());
                 table.addCell(user.getEnabled().toString());
-                table.addCell(user.getProvider().name());
-                table.addCell(user.getAuthorities().toString());
+                table.addCell(user.getProvider().toString());
+                table.addCell("");
             } else if (item instanceof Product) {
                 Product product = (Product) item;
                 table.addCell(product.getId().toString());

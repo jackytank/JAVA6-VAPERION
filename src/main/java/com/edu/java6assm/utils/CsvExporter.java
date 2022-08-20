@@ -2,7 +2,6 @@ package com.edu.java6assm.utils;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.lang.System.Logger;
 import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
@@ -20,7 +19,6 @@ public class CsvExporter<T> {
     public CsvExporter(List<T> list, String filename) {
         this.list = list;
         this.filename = filename;
-        // this.setHeaderByListType(list);
     }
 
     public void export(Writer writer) {
@@ -36,7 +34,7 @@ public class CsvExporter<T> {
                     User user = (User) entity;
                     csvPrinter.printRecord(user.getId(), user.getUsername(), user.getPassword(), user.getEmail(),
                             user.getPhone(), user.getImage_url(), user.getEnabled(), user.getProvider().toString(),
-                            user.getAuthorities());
+                            "");
                 }
                 if (entity instanceof Order) {
                     Order order = (Order) entity;

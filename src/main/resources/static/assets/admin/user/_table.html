@@ -33,6 +33,15 @@
                 </tr>
             </thead>
             <tbody>
+                <tr ng-show="loading">
+                    <th colspan="11">
+                        <div class="d-flex justify-content-center my-4">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
                 <tr ng-repeat="item in pager.items">
                     <th>{{item.id}}</th>
                     <th>{{item.username}}</th>

@@ -1,11 +1,13 @@
 <div class="card">
     <div class="card-header">USER EDITION</div>
     <div class="card-body">
-        <form class="form" name="myform" novalidate>
+        <form class="form" enctype="multipart/form-data" name="myform" novalidate>
             <input type="hidden" ng-model="form.id">
             <div class="mb-3">
                 <label for="image">
-                    <img ng-src="{{form.image_url.startsWith('http')?form.image_url:('/assets/images/'+ (form.image_url || 'default-user.jpg'))}}"
+                    <!-- check xem nếu tên file nó có tên "upload-xxxxxx" thì truy cập folder webapp/upload/images
+                    còn ko thì truy cập resources/static/assets/images -->
+                    <img ng-src="{{ (form.image_url.startsWith('upload')?'/upload/images/':'/assets/images/') + (form.image_url || 'default-user.jpg') }}"
                         style="max-width: 20vw; max-height: 20vh;" alt="User image">
                 </label>
             </div>

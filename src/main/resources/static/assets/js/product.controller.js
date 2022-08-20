@@ -1,6 +1,7 @@
 angular.module("shopping-cart-app").controller("product-ctrl", productController);
 
 function productController($scope, $http, $interval) {
+    $scope.loading = true;
     $scope.productList = [];
     $scope.cates = [];
     // $scope.sortNames = ['Price (Ascending)', 'Price (Descending)'];
@@ -12,32 +13,51 @@ function productController($scope, $http, $interval) {
     };
 
     $scope.sortProducts = function (sortCode) {
+        $scope.productList = [];
+        $scope.loading = true;
         $http.get('/rest/products?sort=' + sortCode).then(res => {
             $scope.productList = res.data;
-        });
+        }).catch(error => { console.error(error); })
+            .finally(function () {
+                $scope.loading = false;
+            });
     };
 
 
     $scope.initialize = function () {
         $http.get('/rest/products').then(res => {
             $scope.productList = res.data;
-        });
+        }).catch(error => { console.error(error); })
+            .finally(function () {
+                $scope.loading = false;
+            });
+
         $http.get('/rest/categories').then(res => {
             $scope.cates = res.data;
-        });
+        }).catch(error => { console.error(error); });
     };
 
     $scope.filterProductByCategory = function (categoryId) {
+        $scope.productList = [];
+        $scope.loading = true;
         $http.get('/rest/products/category/' + categoryId).then(res => {
             $scope.productList = res.data;
-        });
+        }).catch(error => { console.error(error); })
+            .finally(function () {
+                $scope.loading = false;
+            });
     };
 
     $scope.searchProducts = function (query) {
+        $scope.productList = [];
+        $scope.loading = true;
         $http.get('/rest/products/search?query=' + query).then(res => {
             // alert('Product Search Successful');
             $scope.productList = res.data;
-        });
+        }).catch(error => { console.error(error); })
+            .finally(function () {
+                $scope.loading = false;
+            });
     };
 
     $scope.pager = {

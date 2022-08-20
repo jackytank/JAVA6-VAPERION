@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HomeController {
     @RequestMapping({"/","/home/index"})
     public String home(@RequestParam(required = false) String message){
-        return "redirect:/product/list";
+        return "forward:/product/list";
     }
 
     @RequestMapping({"/admin","/admin/home/index"})

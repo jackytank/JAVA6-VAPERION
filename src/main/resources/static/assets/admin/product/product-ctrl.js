@@ -4,11 +4,14 @@ app.controller("product-ctrl", function ($scope, $http) {
     $scope.form = {};
 
     $scope.initialize = function () {
+        $scope.loading = true;
         $http.get("/rest/products").then(resp => {
             $scope.items = resp.data;
             $scope.items.forEach(item => {
                 item.create_date = new Date(item.create_date);
             });
+        }).finally(function () {
+            $scope.loading = false;
         });
 
         $http.get("/rest/categories").then(resp => {

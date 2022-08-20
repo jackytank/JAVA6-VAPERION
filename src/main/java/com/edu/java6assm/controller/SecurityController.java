@@ -18,7 +18,7 @@ public class SecurityController {
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
             return "login";
         }
-        return "redirect:/";
+        return "forward:/";
     }
 
     @RequestMapping("/security/login/form")

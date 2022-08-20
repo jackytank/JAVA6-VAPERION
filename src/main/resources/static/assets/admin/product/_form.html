@@ -1,10 +1,13 @@
 <div class="card">
     <div class="card-header">PRODUCT EDITION</div>
     <div class="card-body">
-        <form class="form" name="myform" novalidate>
+        <form class="form" enctype="multipart/form-data" name="myform" novalidate>
             <div class="mb-3">
                 <label for="image">
-                    <img ng-src="{{'/assets/images/'+ (form.image || 'default-product.jpg')}}" style="max-width: 20vw; max-height: 20vh;">
+                    <!-- check xem nếu tên file nó có tên "upload-xxxxxx" thì truy cập folder webapp/upload/images
+                    còn ko thì truy cập resources/static/assets/images -->
+                    <img ng-src="{{ (form.image.startsWith('upload')?'/upload/images/':'/assets/images/') + (form.image || 'default-product.jpg') }}"
+                        style="max-width: 20vw; max-height: 20vh;">
                 </label>
             </div>
             <div class="mb-3">

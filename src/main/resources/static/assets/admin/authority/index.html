@@ -2,20 +2,29 @@
     <div class="card-header">AUTHORIZING</div>
     <table class="table">
         <thead>
-        <tr>
-            <th></th>
-            <th ng-repeat="role in roles" class="text-center">
-                <span>{{role.id}}</span>
-            </th>
-        </tr>
+            <tr>
+                <th></th>
+                <th ng-repeat="role in roles" class="text-center">
+                    <span>{{role.id}}</span>
+                </th>
+            </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="acc in admins">
-            <td>{{acc.username}}</td>
-            <td ng-repeat="role in roles" class="text-center">
-                <input ng-checked="authority_of(acc,role)" ng-click="authority_changed(acc,role)" type="checkbox">
-            </td>
-        </tr>
+            <tr ng-show="loading">
+                <td colspan="2">
+                    <div class="d-flex justify-content-center my-4">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-repeat="acc in admins">
+                <td>{{acc.username}}</td>
+                <td ng-repeat="role in roles" class="text-center">
+                    <input ng-checked="authority_of(acc,role)" ng-click="authority_changed(acc,role)" type="checkbox">
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

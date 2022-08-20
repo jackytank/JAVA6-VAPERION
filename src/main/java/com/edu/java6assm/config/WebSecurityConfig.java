@@ -60,12 +60,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
                 http.csrf().disable();
                 http.authorizeRequests()
+                                .antMatchers(
+                                                "/",
+                                                "/security/**",
+                                                "/rest/**",
+                                                "/login**",
+                                                "/callback/",
+                                                "/webjars/**",
+                                                "/error**",
+                                                "/assets/**",
+                                                "/file/**/*.*",
+                                                "/*.html",
+                                                "/favicon.ico",
+                                                "/**/*.html",
+                                                "/**/*.css",
+                                                "/**/*.js")
+                                .permitAll()
                                 .antMatchers("/order/**").authenticated()
-                                .antMatchers("/admin/**").hasAnyRole("STAFF", "DIRE")
+                                .antMatchers("/admin/**",
+                                                "/admin/**/export**",
+                                                "/rest/roles",
+                                                "/rest/usersrole/**")
+                                .hasAnyRole("STAFF", "DIRE")
                                 .antMatchers("/assets/admin/**").hasAnyRole("STAFF", "DIRE")
-                                .antMatchers("/rest/authorities").hasRole("DIRE")
-                                .antMatchers("/account/editprofile").authenticated()
-                                .anyRequest().permitAll();
+                                .antMatchers("/rest/authorities/**").hasRole("DIRE")
+                                .anyRequest().authenticated();
 
                 http.formLogin()
                                 .loginPage("/security/login/form")

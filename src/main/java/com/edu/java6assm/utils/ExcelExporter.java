@@ -15,10 +15,11 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import com.edu.java6assm.entity.Category;
-import com.edu.java6assm.entity.User;
-import com.edu.java6assm.entity.Product;
 import com.edu.java6assm.entity.Order;
+import com.edu.java6assm.entity.Product;
+import com.edu.java6assm.entity.User;
 
 public class ExcelExporter<T> {
     // Source:
@@ -137,6 +138,8 @@ public class ExcelExporter<T> {
             cell.setCellValue((Date) value);
         } else if (value instanceof LocalDate) {
             cell.setCellValue(((LocalDate) value).format(DateTimeFormatter.ISO_DATE));
+        } else if (value instanceof Enum) {
+            cell.setCellValue("" + value);
         } else {
             cell.setCellValue("");
         }
@@ -146,7 +149,6 @@ public class ExcelExporter<T> {
     public void export(HttpServletResponse resp) throws IOException {
         writeHeaderRow();
         writeDataRow();
-
         ServletOutputStream out = resp.getOutputStream();
         wb.write(out);
         wb.close();

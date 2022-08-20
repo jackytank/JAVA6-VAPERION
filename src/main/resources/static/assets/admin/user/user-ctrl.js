@@ -5,6 +5,7 @@ app.controller("user-ctrl", function ($scope, $http) {
     $scope.roles = [];
 
     $scope.initialize = function () {
+        $scope.loading = true;
         $http.get("/rest/roles").then(resp => {
             new Set(resp.data).forEach(role => {
                 if (!$scope.roles.includes({ id: role.id })) {
@@ -26,7 +27,8 @@ app.controller("user-ctrl", function ($scope, $http) {
                 }
             });
             // console.log('providers: ' + $scope.providers.find(p => p === 'GOOGLE'));
-
+        }).finally(function () {
+            $scope.loading = false;
         });
     };
 
@@ -96,7 +98,7 @@ app.controller("user-ctrl", function ($scope, $http) {
         let item = angular.copy($scope.form);
         let check = confirm(`Are you sure to update this user?`);
         if (check) {
-            
+
 
             $http.put(`/rest/users/${item.id}`, item).then(resp => {
                 let index = $scope.items.findIndex(p => p.id == item.id);
