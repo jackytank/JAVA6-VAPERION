@@ -27,6 +27,11 @@ public class OrderRestController {
     @Autowired
     OrderService orderService;
 
+    @GetMapping("/rest/orders")
+    public ResponseEntity<List<Order>> getOrders() {
+        return ResponseEntity.ok(orderService.findAll());
+    }
+
     @PostMapping("/rest/orders")
     public ResponseEntity<Order> create(@RequestBody JsonNode orderData) {
         return ResponseEntity.ok(orderService.create(orderData));

@@ -64,6 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                 .antMatchers("/admin/**").hasAnyRole("STAFF", "DIRE")
                                 .antMatchers("/assets/admin/**").hasAnyRole("STAFF", "DIRE")
                                 .antMatchers("/rest/authorities").hasRole("DIRE")
+                                .antMatchers("/account/editprofile").authenticated()
                                 .anyRequest().permitAll();
 
                 http.formLogin()

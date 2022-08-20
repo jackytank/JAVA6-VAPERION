@@ -3,11 +3,9 @@ package com.edu.java6assm.controller.rest;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,10 +59,10 @@ public class UserRestController {
             if (!user.isPresent()) {
                 user = userService.findById(Integer.valueOf((String) idOrUsername.get()));
             }
-            List<SimpleGrantedAuthority> huhu = user.get().getAuthorities().stream()
-                    .map(au -> new SimpleGrantedAuthority("ROLE_" + au.getRole().getId()))
-                    .peek(System.out::println)
-                    .collect(Collectors.toList());
+            // List<SimpleGrantedAuthority> huhu = user.get().getAuthorities().stream()
+            //         .map(au -> new SimpleGrantedAuthority("ROLE_" + au.getRole().getId()))
+            //         .peek(System.out::println)
+            //         .collect(Collectors.toList());
             return ResponseEntity.ok(user.get().getAuthorities());
         } catch (NoSuchElementException e) {
             return ResponseEntity.notFound().build();

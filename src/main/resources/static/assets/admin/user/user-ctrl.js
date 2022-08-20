@@ -200,5 +200,4 @@ app.controller("user-ctrl", function ($scope, $http) {
             this.page = this.count - 1;
         }
     };
-    console.log($scope.pager.items);
 });

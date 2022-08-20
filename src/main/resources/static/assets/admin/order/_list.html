@@ -1,29 +1,41 @@
-<div class="table-responsive">
-    <select class="form-select" aria-label="User select" ng-model="selectedUser" ng-init="selectedUser = users[0].username" ng-change="displayOrderByUsername(selectedUser)">
-        <option ng-repeat="user in users" value="{{user.username}}">{{user.username}}</option>
-    </select>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Order No.</th>
-                <th>Order Date</th>
-                <th>Shipping Address</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="order in orders">
-                <td>{{$index+1}}</td>
-                <td>{{order.id}}</td>
-                <td>{{order.create_date}}</td>
-                <td>{{order.address}}</td>
-                <td>
-                    <a ng-click="displayOrderDetails(order.id)" class="btn btn-secondary">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<div class="card">
+    <div class="card-header">
+        <div class="btn-group float-end">
+            <a href="/admin/orders/export-pdf" class="btn btn-secondary">PDF</a>
+            <a href="/admin/orders/export-excel" class="btn btn-secondary">EXCEL</a>
+            <a href="/admin/orders/export-csv" class="btn btn-secondary">CSV</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <select class="form-select" aria-label="User select" ng-model="selectedUser" ng-init="selectedUser = users[0].username"
+                ng-change="displayOrderByUsername(selectedUser)">
+                <option ng-repeat="user in users" value="{{user.username}}">{{user.username}}</option>
+            </select>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Order No.</th>
+                        <th>Order Date</th>
+                        <th>Shipping Address</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="order in orders">
+                        <td>{{$index+1}}</td>
+                        <td>{{order.id}}</td>
+                        <td>{{order.create_date}}</td>
+                        <td>{{order.address}}</td>
+                        <td>
+                            <a ng-click="displayOrderDetails(order.id)" class="btn btn-secondary">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

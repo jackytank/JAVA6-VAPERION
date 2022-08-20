@@ -8,4 +8,6 @@ public interface ExportService {
     void exportExcel(Object entity, String fileAndSheetName, HttpServletResponse response) throws IOException;
 
     void exportPDF(Object entity, String fileAndTitleName, HttpServletResponse response) throws IOException;
+
+    void exportCSV(Object entity, String fileAndTitleName, HttpServletResponse response) throws IOException;
 }

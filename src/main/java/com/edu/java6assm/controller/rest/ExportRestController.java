@@ -28,7 +28,6 @@ public class ExportRestController {
     ExportService exportService;
 
     // export excel
-
     @GetMapping("/admin/products/export-excel")
     public ResponseEntity<String> exportProductExcel(HttpServletResponse response) {
         try {
@@ -84,6 +83,37 @@ public class ExportRestController {
     public ResponseEntity<String> exportOrdersPdf(HttpServletResponse response) {
         try {
             exportService.exportPDF(new Order(), "orders", response);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (IOException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // export csv
+    @GetMapping("/admin/products/export-csv")
+    public ResponseEntity<String> exportProductCsv(HttpServletResponse response) {
+        try {
+            exportService.exportCSV(new Product(), "products", response);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (IOException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/admin/users/export-csv")
+    public ResponseEntity<String> exportUsersCsv(HttpServletResponse response) {
+        try {
+            exportService.exportCSV(new User(), "users", response);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (IOException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/admin/orders/export-csv")
+    public ResponseEntity<String> exportOrdersCsv(HttpServletResponse response) {
+        try {
+            exportService.exportCSV(new Order(), "orders", response);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (IOException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

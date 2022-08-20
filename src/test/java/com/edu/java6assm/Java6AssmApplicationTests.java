@@ -8,6 +8,7 @@ class Java6AssmApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

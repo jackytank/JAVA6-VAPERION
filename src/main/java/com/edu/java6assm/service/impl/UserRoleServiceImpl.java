@@ -2,6 +2,7 @@ package com.edu.java6assm.service.impl;
 
 import com.edu.java6assm.entity.User;
 import com.edu.java6assm.entity.UserRole;
+import com.edu.java6assm.model.UserRoleCount;
 import com.edu.java6assm.repository.UserRepository;
 import com.edu.java6assm.repository.UserRoleRepository;
 import com.edu.java6assm.service.UserRoleService;
@@ -17,7 +18,6 @@ public class UserRoleServiceImpl implements UserRoleService {
 
     @Autowired
     UserRepository userRepo;
-
 
     public List<UserRole> findRolesOfAdministrators() {
         List<User> accounts = userRepo.getAdministrators();
@@ -37,5 +37,10 @@ public class UserRoleServiceImpl implements UserRoleService {
     @Override
     public void delete(Integer id) {
         userRoleRepo.deleteById(id);
+    }
+
+    @Override
+    public List<UserRoleCount> getUserRoleCounts() {
+        return userRoleRepo.getUserRoleCount();
     }
 }
