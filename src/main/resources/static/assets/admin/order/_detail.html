@@ -15,6 +15,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr ng-show="detailLoading">
+                        <td colspan="5">
+                            <div class="d-flex justify-content-center my-4">
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
                     <tr ng-repeat="details in orderDetails">
                         <td>{{details.product.id}}</td>
                         <td>{{details.product.name}}</td>

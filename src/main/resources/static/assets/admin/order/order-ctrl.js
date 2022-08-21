@@ -4,15 +4,25 @@ app.controller("order-ctrl", function ($scope, $http) {
     $scope.orderDetails = [];
 
     $scope.initialize = function () {
+        $scope.userListLoading = true;
         $http.get("/rest/users").then(resp => {
             $scope.users = resp.data;
-        }).catch(err => { console.error(err); });
+        }).catch(err => {
+            console.error(err);
+        }).finally(function () {
+            $scope.userListLoading = false;
+        });
     };
 
     $scope.displayOrderByUsername = function (username) {
+        $scope.orderLoading = true;
         $http.get(`/rest/orders/list/${username}`).then(resp => {
             $scope.orders = resp.data;
-        }).catch(err => { console.error(err); });
+        }).catch(err => {
+            console.error(err);
+        }).finally(function () {
+            $scope.orderLoading = false;
+        });
     };
 
     $scope.initialize();
@@ -38,8 +48,13 @@ app.controller("order-ctrl", function ($scope, $http) {
     $scope.storageProducts.loadFromLocalStorage();
 
     $scope.displayOrderDetails = function (orderId) {
+        $scope.detailLoading = true;
         $http.get(`/rest/orders/detail/${orderId}`).then(resp => {
             $scope.orderDetails = resp.data;
+        }).catch(err => {
+            console.error(err);
+        }).finally(function () {
+            $scope.detailLoading = false;
         });
         $(".nav-tabs a:eq(1)").tab('show');
     };

@@ -10,6 +10,13 @@
         <div class="table-responsive">
             <select class="form-select" aria-label="User select" ng-model="selectedUser" ng-init="selectedUser = users[0].username"
                 ng-change="displayOrderByUsername(selectedUser)">
+                <option disabled ng-show="userListLoading">
+                    <div class="d-flex justify-content-center my-4">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </option>
                 <option ng-repeat="user in users" value="{{user.username}}">{{user.username}}</option>
             </select>
             <table class="table">
@@ -23,6 +30,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr ng-show="orderLoading">
+                        <td colspan="5">
+                            <div class="d-flex justify-content-center my-4">
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
                     <tr ng-repeat="order in orders">
                         <td>{{$index+1}}</td>
                         <td>{{order.id}}</td>

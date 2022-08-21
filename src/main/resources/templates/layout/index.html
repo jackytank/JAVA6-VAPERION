@@ -24,15 +24,15 @@
 
 <body class="" ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
     <div class="container" ng-controller="product-ctrl">
-        <section th:replace="/layout/_zalo-chatbox.html"></section>
+        <section th:replace="layout/_zalo-chatbox.html"></section>
 
         <!-- header -->
-        <header th:replace="/layout/_header.html :: header"></header>
+        <header th:replace="layout/_header.html :: header"></header>
 
         <!-- main content -->
         <main class="row" style="min-height: 100vh;">
             <aside class="col-md-2">
-                <div th:replace="/layout/_category.html"></div>
+                <div th:replace="layout/_category.html"></div>
             </aside>
             <article class="col-md-10">
                 <div th:replace="${main}"></div>
@@ -41,7 +41,7 @@
 
     </div>
     <!-- footer -->
-    <footer th:replace="/layout/_footer.html :: footer"></footer>
+    <footer th:replace="layout/_footer.html :: footer"></footer>
 
 
 
