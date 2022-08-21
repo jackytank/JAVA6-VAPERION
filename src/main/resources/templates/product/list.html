@@ -58,8 +58,8 @@
         </div>
 
         <script th:inline="javascript">
-            let message = /*[[${ message }]]*/ '';
-            if (message != '') {
+            let message = /*[[${ message }]]*/ null
+            if (message != null) {
                 alert(message);
             }
         </script>
