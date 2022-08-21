@@ -1,18 +1,21 @@
 package com.edu.java6assm.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
-    @RequestMapping({"/","/home/index"})
-    public String home(@RequestParam(required = false) String message){
-        return "forward:/product/list";
+    @GetMapping({ "/", "/home/index" })
+    public ModelAndView home(ModelMap model, @RequestParam(required = false) String message) {
+        model.addAttribute("message", message);
+        return new ModelAndView("redirect:/product/list", model);
     }
 
-    @RequestMapping({"/admin","/admin/home/index"})
-    public String admin(){
+    @GetMapping({ "/admin", "/admin/home/index" })
+    public String admin() {
         return "redirect:/assets/admin/index.html";
     }
 }
