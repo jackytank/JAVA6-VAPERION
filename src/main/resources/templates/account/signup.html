@@ -11,51 +11,60 @@
 </head>
 
 <body>
-    <section class="vh-100 bg-light">
-        <div class="container py-2 h-100">
-            <div class="row d-flex justify-content-center align-content-start align-items-center h-100">
+    <section class="bg-white">
+        <div class="container py-2">
+            <div class="row d-flex justify-content-center align-content-start align-items-center">
                 <div class="col-12 col-md-8 col-lg-8 col-xl-6">
-                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                        <div class="card-body p-4">
-
-                            <form th:action="@{/account/register}" th:object="${user}" method="post" class="needs-validation" novalidate="true"
-                                style="max-width: 600px; margin: 0 auto;">
-                                <div class="m-3">
-                                    <h3 class="mb-5">Sign up</h3>
-                                    <div class="mb-4 row">
-                                        <label class="form-label">Username: </label>
-                                        <div class="">
-                                            <input type="text" th:field="*{username}" class="form-control" required="required" />
+                    <div class="card rounded-4 shadow">
+                        <div class="card-body p-md-5 p-sm-2">
+                            <h2 class="fw-bold mb-4">Sign up for free</h2>
+                            <form th:action="@{/account/register}" th:object="${user}" method="post" class="needs-validation" novalidate="true">
+                                <div class="">
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input type="text" th:field="*{username}" id="floatingUsername" class="form-control rounded-3" required="required"
+                                                placeholder="Username" />
+                                            <label for="floatingUsername">Username</label>
                                             <div class="invalid-feedback">Please enter a valid username.</div>
                                         </div>
                                     </div>
-                                    <div class="mb-4 row">
-                                        <label class="form-label">E-mail: </label>
-                                        <div class="">
-                                            <input type="email" th:field="*{email}" class="form-control" required="required" />
+                                    <div class="mb-3  ">
+                                        <div class="form-floating">
+                                            <input type="email" th:field="*{email}" id="floatingEmail" class="form-control rounded-3" required="required"
+                                                placeholder="name@example.com" />
+                                            <label for="floatingEmail">E-mail: </label>
                                             <div class="invalid-feedback">Please enter a valid email.</div>
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="mb-4 row">
-                                        <label class="form-label">Password: </label>
-                                        <div>
-                                            <input type="password" id="password" th:field="*{password}" class="form-control" required="required" minlength="6"
-                                                maxlength="10" />
+                                    <div class="mb-3  ">
+                                        <div class="form-floating">
+                                            <input type="password" id="password" th:field="*{password}" class="form-control  rounded-3" required="required"
+                                                minlength="6" maxlength="10" placeholder="Password" />
+                                            <label for="password">Password: </label>
                                             <div class="invalid-feedback">Please enter a valid password.</div>
                                         </div>
                                     </div>
-                                    <div class="mb-4 row">
-                                        <label class="form-label">Retype: </label>
-                                        <div class="">
-                                            <input type="password" class="form-control" required="required" minlength="6" maxlength="10"
-                                                oninput="checkPasswordMatch(this);" />
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input type="password" id="floatingRetype" class="form-control  rounded-3" required="required" minlength="6"
+                                                maxlength="10" oninput="checkPasswordMatch(this);" placeholder="Retype" />
+                                            <label for="floatingRetype">Retype: </label>
                                             <div class="invalid-feedback">Please enter a valid retype.</div>
                                         </div>
                                     </div>
                                     <div class="d-grid gap-2 mb-2">
-                                        <button type="submit" id="submit" class="btn btn-primary">Sign Up</button>
+                                        <button type="submit" id="submit" class="btn btn-lg rounded-3 btn-primary">Sign Up</button>
+                                        <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
                                     </div>
+                                    <hr class="my-4">
+                                    <h2 class="fs-5 fw-bold mb-3 text-center">Or use a third-party</h2>
+                                    <a th:href="@{/oauth2/authorization/google}" class="w-100 py-2 mb-2 btn btn-outline-danger rounded-3">
+                                        <i class="fab fa-google me-2"></i>
+                                        Sign in with google</a>
+                                    <a th:href="@{/oauth2/authorization/facebook}" class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3">
+                                        <i class="fab fa-facebook-f me-2"></i>Sign
+                                        in with facebook</a>
                                     <h4 class="text-danger mb-2">[(${message})]</h4>
                                 </div>
                             </form>

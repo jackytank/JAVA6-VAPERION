@@ -22,7 +22,7 @@
     <link rel="stylesheet" th:href="@{/assets/css/style.css}">
 </head>
 
-<body class="" ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
     <div class="container" ng-controller="product-ctrl">
         <section th:replace="layout/_zalo-chatbox.html"></section>
 
@@ -38,7 +38,6 @@
                 <div th:replace="${main}"></div>
             </article>
         </main>
-
     </div>
     <!-- footer -->
     <footer th:replace="layout/_footer.html :: footer"></footer>

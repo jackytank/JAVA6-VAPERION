@@ -12,24 +12,27 @@
 </head>
 
 <body>
-    <section class="vh-100 bg-light">
+    <section class="bg-white">
         <div class="container py-2 h-100">
-            <div class="row d-flex justify-content-center align-content-start align-items-center h-100">
+            <div class="row d-flex justify-content-center align-content-start align-items-center">
                 <div class="col-12 col-md-8 col-lg-8 col-xl-6">
-                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                        <div class="card-body p-4">
-
+                    <div class="card rounded-4 shadow">
+                        <div class="card-body p-md-5 p-sm-2">
                             <form th:action="@{/security/login}" method="post">
-                                <h3 class="mb-5">Sign in</h3>
+                                <h3 class="fw-bold mb-4">Sign in</h3>
 
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="typeUsernameX-2">Username</label>
-                                    <input type="text" id="typeUsernameX-2" name="username" class="form-control" />
+                                <div class="mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" id="typeUsernameX-2" name="username" class="form-control" placeholder="Username" />
+                                        <label class="form-label" for="typeUsernameX-2">Username</label>
+                                    </div>
                                 </div>
 
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="typePasswordX-2">Password</label>
-                                    <input type="password" id="typePasswordX-2" name="password" class="form-control" />
+                                <div class="mb-3">
+                                    <div class="form-floating">
+                                        <input type="password" id="typePasswordX-2" name="password" class="form-control" placeholder="Password" />
+                                        <label class="form-label" for="typePasswordX-2">Password</label>
+                                    </div>
                                 </div>
 
                                 <!-- Checkbox -->
@@ -38,20 +41,19 @@
                                     <label class="form-check-label" for="form1Example3"> Remember password? </label>
                                 </div>
 
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-primary" type="submit">Login</button>
+                                <div class="d-grid gap-2 mb-2">
+                                    <button type="submit" id="submit" class="btn btn-lg rounded-3 btn-primary">Sign In</button>
                                 </div>
 
                                 <hr class="my-4">
 
-                                <div class="d-grid gap-2 mb-4">
-                                    <a th:href="@{/oauth2/authorization/google}" class="btn btn-primary mb-2" style="background-color: #dd4b39;"><i
-                                            class="fab fa-google me-2"></i>
-                                        Sign in with google</a>
-                                    <a th:href="@{/oauth2/authorization/facebook}" class="btn btn-primary mb-2" style="background-color: #3b5998;"><i
-                                            class="fab fa-facebook-f me-2"></i>Sign
-                                        in with facebook</a>
-                                </div>
+                                <h2 class="fs-5 fw-bold mb-3 text-center">Or use a third-party</h2>
+                                <a th:href="@{/oauth2/authorization/google}" class="w-100 py-2 mb-2 btn btn-outline-danger rounded-3">
+                                    <i class="fab fa-google me-2"></i>
+                                    Sign in with google</a>
+                                <a th:href="@{/oauth2/authorization/facebook}" class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3">
+                                    <i class="fab fa-facebook-f me-2"></i>Sign
+                                    in with facebook</a>
                                 <h4 class="text-danger mb-2">[(${message})]</h4>
                             </form>
 

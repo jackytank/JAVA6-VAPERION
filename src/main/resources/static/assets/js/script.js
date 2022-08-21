@@ -1,9 +1,11 @@
 
+// không hiện được phải dùng th:inline trong mỗi file html nếu muốn hiện ${message}
+
 // alert ${message} if it non empty
-var message = /*[[${message}]]*/ '';
-if (message !== '') {
-    alert(message);
-}
+// let message = [[${param.message}]]
+// alert(message);
+// if (message) {
+// }
 
 // delete message after 3 seconds
 function functionToDisappearInnerHTML(elementPos) {

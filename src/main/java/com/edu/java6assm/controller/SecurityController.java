@@ -23,7 +23,7 @@ public class SecurityController {
 
     @RequestMapping("/security/login/form")
     public String loginForm(Model model) {
-        model.addAttribute("message", "Please login!");
+        // model.addAttribute("message", "Please login!");
         return "security/login";
     }
 

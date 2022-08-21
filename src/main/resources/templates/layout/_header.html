@@ -54,7 +54,7 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="userDropdown">
                                 <th:block th:if="${#request.remoteUser}">
-                                    <li th:text="${#request.userPrincipal.authorities}"></li>
+                                    <!-- <li th:text="${#request.userPrincipal.authorities}"></li> -->
                                     <li
                                         th:if="${#request.isUserInRole('ROLE_CUST') or #request.isUserInRole('ROLE_STAFF') or #request.isUserInRole('ROLE_DIRE')}">
                                         <a class="dropdown-item" th:href="@{/account/editprofile}">Edit Profile</a>
