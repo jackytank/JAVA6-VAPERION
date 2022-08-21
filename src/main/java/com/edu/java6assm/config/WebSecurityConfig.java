@@ -61,12 +61,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 http.csrf().disable().cors();
                 http.authorizeRequests()
                                 .antMatchers(
-                                                HttpMethod.GET,
                                                 "/",
                                                 "/home/**",
                                                 "/security/**",
                                                 "/rest/**",
                                                 "/login**",
+                                                "/login",
+                                                "/oauth2/**",
+                                                "/account/forgotpassword/**",
+                                                "/reset_password",
+                                                "/product/**",
                                                 "/callback/",
                                                 "/webjars/**",
                                                 "/error**",
