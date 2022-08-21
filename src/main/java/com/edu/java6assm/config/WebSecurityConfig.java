@@ -60,13 +60,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
                 http.csrf().disable().cors();
                 http.authorizeRequests()
+                                .antMatchers(HttpMethod.OPTIONS, "/").permitAll()
                                 .antMatchers(
-                                                "/",
+                                                HttpMethod.GET,
                                                 "/home/**",
                                                 "/security/**",
-                                                "/rest/**",
+                                                "/rest/products/**",
+                                                "/rest/categories/**",
+                                                "/rest/upload/**",
                                                 "/login**",
                                                 "/login",
+                                                "/cart/**",
                                                 "/oauth2/**",
                                                 "/account/forgotpassword/**",
                                                 "/reset_password",
@@ -82,13 +86,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                                 "/**/*.css",
                                                 "/**/*.js")
                                 .permitAll()
-                                .antMatchers("/order/**").authenticated()
                                 .antMatchers("/admin/**",
-                                                "/admin/**/export**",
                                                 "/rest/roles",
-                                                "/rest/usersrole/**")
+                                                "/rest/usersrole/**",
+                                                "/assets/admin/**")
                                 .hasAnyRole("STAFF", "DIRE")
-                                .antMatchers("/assets/admin/**").hasAnyRole("STAFF", "DIRE")
                                 .antMatchers("/rest/authorities/**").hasRole("DIRE")
                                 .anyRequest().authenticated();
 
