@@ -68,6 +68,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                                 "/rest/categories/**",
                                                 "/rest/upload/**",
                                                 "/cart/**",
+                                                "/account/**",
+                                                "/verify/**",
                                                 "/oauth2/**",
                                                 "/account/forgotpassword/**",
                                                 "/reset_password",
