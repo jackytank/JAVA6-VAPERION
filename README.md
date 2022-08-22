@@ -35,7 +35,7 @@ Stack used:
     spring.mail.properties.mail.smpt.auth=true
     spring.mail.properties.mail.smtp.starttls.enable=true
   ```
-  - Create Google, Facebook OAuth app and put your client-id, secret key to here, if you don't know how pls check this [link]   (https://www.codejava.net/frameworks/spring-boot/social-login-with-google-and-facebook-examples)
+  - Create Google, Facebook OAuth app and put your client-id, secret key to here, if you don't know how pls check this [link](https://www.codejava.net/frameworks/spring-boot/social-login-with-google-and-facebook-examples)
   ```
     # Google
     spring.security.oauth2.client.registration.google.client-id=<your google client id>
