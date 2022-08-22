@@ -8,38 +8,6 @@ Stack used:
  * Back-end:
   - Spring Boot, Spring Security, OAuth2, SQL Server 2019, 
 
-## Visuals - Demo
-
-- User homepage
-
-![image](https://user-images.githubusercontent.com/52403567/185976060-377e0e9c-56b8-406e-aa80-d224edd1e714.png)
-
-![image](https://user-images.githubusercontent.com/52403567/185976150-6e8b923f-abcd-4f2c-989a-c71f59af4da7.png)
-
-![image](https://user-images.githubusercontent.com/52403567/185976439-d6daf87b-2f16-43d3-8785-d4d989ea4fac.png)
-
-![image](https://user-images.githubusercontent.com/52403567/185976703-7a78a42d-ccd1-4c63-9066-a2fa06e46424.png)
-
-![image](https://user-images.githubusercontent.com/52403567/185975720-0171ce13-6ad9-4822-9846-a93bf6695f6e.png)
-
-![image](https://user-images.githubusercontent.com/52403567/185975794-c839c7b3-d1a6-4b65-a68e-ed7cd1329537.png)
-
-![image](https://user-images.githubusercontent.com/52403567/185975922-b7785c69-1d3c-4c72-96c4-be819aca4999.png)
-
-- Admin homepage
-
-![image](https://user-images.githubusercontent.com/52403567/185976834-1abbf189-3e00-48ac-a952-01f66e49296c.png)
-
-![image](https://user-images.githubusercontent.com/52403567/185977013-8d2e07db-9ceb-4e5f-b555-1e553511f90c.png)
-
-![image](https://user-images.githubusercontent.com/52403567/185977079-ca612ff8-8a76-421f-8c53-f2ddcd053b25.png)
-
-![image](https://user-images.githubusercontent.com/52403567/185977133-d1d135d6-4538-4e59-bc36-127cae09a90a.png)
-
-![image](https://user-images.githubusercontent.com/52403567/185977182-2d447ad2-e7a0-4606-8372-c267b17c064d.png)
-
-
-
 ## Installation
 1. Clone this repo, create database by running the db.sql script inside db folder
 2. Config application.properties according to your credentials
@@ -75,6 +43,37 @@ Stack used:
     spring.security.oauth2.client.registration.facebook.client-secret=<your facebook client secret>
     spring.security.oauth2.client.registration.facebook.scope=email,public_profile
   ```
+
+## Visuals - Demo
+
+- User homepage
+
+![image](https://user-images.githubusercontent.com/52403567/185976060-377e0e9c-56b8-406e-aa80-d224edd1e714.png)
+
+![image](https://user-images.githubusercontent.com/52403567/185976150-6e8b923f-abcd-4f2c-989a-c71f59af4da7.png)
+
+![image](https://user-images.githubusercontent.com/52403567/185976439-d6daf87b-2f16-43d3-8785-d4d989ea4fac.png)
+
+![image](https://user-images.githubusercontent.com/52403567/185976703-7a78a42d-ccd1-4c63-9066-a2fa06e46424.png)
+
+![image](https://user-images.githubusercontent.com/52403567/185975720-0171ce13-6ad9-4822-9846-a93bf6695f6e.png)
+
+![image](https://user-images.githubusercontent.com/52403567/185975794-c839c7b3-d1a6-4b65-a68e-ed7cd1329537.png)
+
+![image](https://user-images.githubusercontent.com/52403567/185975922-b7785c69-1d3c-4c72-96c4-be819aca4999.png)
+
+- Admin homepage
+
+![image](https://user-images.githubusercontent.com/52403567/185976834-1abbf189-3e00-48ac-a952-01f66e49296c.png)
+
+![image](https://user-images.githubusercontent.com/52403567/185977013-8d2e07db-9ceb-4e5f-b555-1e553511f90c.png)
+
+![image](https://user-images.githubusercontent.com/52403567/185977079-ca612ff8-8a76-421f-8c53-f2ddcd053b25.png)
+
+![image](https://user-images.githubusercontent.com/52403567/185977133-d1d135d6-4538-4e59-bc36-127cae09a90a.png)
+
+![image](https://user-images.githubusercontent.com/52403567/185977182-2d447ad2-e7a0-4606-8372-c267b17c064d.png)
+
 
 ## Support
 If things are unclear, PM me at [balisongian@gmail.com](mailto:balisongian@gmail.com)
