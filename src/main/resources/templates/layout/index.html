@@ -15,7 +15,7 @@
     <!-- font awsome -->
     <script src="https://kit.fontawesome.com/e136359f35.js" crossorigin="anonymous"></script>
     <!-- Zalo SDK -->
-    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+    <!-- <script src="https://sp.zalo.me/plugins/sdk.js"></script> -->
     <!-- cart css -->
     <link rel="stylesheet" th:href="@{/assets/css/cart.css}">
     <!-- custom css -->
@@ -24,11 +24,8 @@
 
 <body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
     <div class="container" ng-controller="product-ctrl">
-        <section th:replace="layout/_zalo-chatbox.html"></section>
-
         <!-- header -->
         <header th:replace="layout/_header.html :: header"></header>
-
         <!-- main content -->
         <main class="row" style="min-height: 100vh;">
             <aside class="col-md-2">
@@ -38,11 +35,13 @@
                 <div th:replace="${main}"></div>
             </article>
         </main>
+        <!-- term modal -->
+        <div th:replace="component/term_modal.html"></div>
+        <!-- career modal -->
+        <div th:replace="component/career_modal.html"></div>
     </div>
     <!-- footer -->
     <footer th:replace="layout/_footer.html :: footer"></footer>
-
-
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
@@ -54,8 +53,13 @@
     <!-- angularjs controller -->
     <script th:src="@{/assets/js/product.controller.js}"></script>
     <script th:src="@{/assets/js/cart.controller.js}"></script>
+    <script th:src="@{/assets/js/user.controller.js}"></script>
     <!-- custom js -->
     <script th:src="@{/assets/js/script.js}"></script>
+
+    <!-- chat box -->
+    <script type="text/javascript" src="https://popupsmart.com/freechat.js"></script>
+    <script> window.start.init({ title: "Vaperion support", message: "Chào quý khách tôi là Putin nhân viên của Vaperion, tôi có thể giúp gì cho quý khách ạ", color: "#1C86FA", position: "right", placeholder: "Enter your message", withText: "Write with", viaWhatsapp: "Or write us directly via Whatsapp", gty: "Go to your", awu: "and write us", connect: "Connect now", button: "Chat with us", device: "everywhere", logo: "https://d2r80wdbkwti6l.cloudfront.net/ktrwiL7KIHfTxDhRqKweEPOn49cU2I4v.jpg", person: "https://d2r80wdbkwti6l.cloudfront.net/J8r1vVGrGgPHMqvAeaGV6YLAV5quh6P5.jpg", services: [{ "name": "messenger", "content": "100084897218600" }] })</script>
 </body>
 
 </html>

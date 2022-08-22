@@ -98,8 +98,6 @@ app.controller("user-ctrl", function ($scope, $http) {
         let item = angular.copy($scope.form);
         let check = confirm(`Are you sure to update this user?`);
         if (check) {
-
-
             $http.put(`/rest/users/${item.id}`, item).then(resp => {
                 let index = $scope.items.findIndex(p => p.id == item.id);
                 $scope.items[index] = item;
@@ -141,6 +139,7 @@ app.controller("user-ctrl", function ($scope, $http) {
             console.log("Error", error);
         });
     };
+    
     $scope.initialize();
 
     $scope.authority_changed = function (_user, _role) {

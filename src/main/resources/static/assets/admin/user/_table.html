@@ -55,7 +55,7 @@
                     <th>{{item.reset_pwd_token | limitTo: 10 }}{{item.reset_pwd_token.length > 10 ? '...' : ''}}</th>
                     <th>
                         <div class="btn-group btn-group-xs">
-                            <button class="btn btn-sm btn-secondary" ng-disabled="item.provider !== 'DATABASE'" ng-click="edit(item)">Edit</button>
+                            <button class="btn btn-sm btn-secondary" ng-click="edit(item)">Edit</button>
                             <button class="btn btn-sm btn-danger" ng-click="delete(item)">Del</button>
                         </div>
                     </th>

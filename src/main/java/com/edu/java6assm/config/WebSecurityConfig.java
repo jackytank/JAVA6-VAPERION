@@ -85,6 +85,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                                 "/**/*.css",
                                                 "/**/*.js")
                                 .permitAll()
+                                .antMatchers("/account/editprofile").authenticated()
                                 .antMatchers("/admin/**",
                                                 "/rest/roles",
                                                 "/rest/usersrole/**",

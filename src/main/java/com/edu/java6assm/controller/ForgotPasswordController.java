@@ -78,7 +78,6 @@ public class ForgotPasswordController {
         model.addAttribute("token", token);
         if (user == null) {
             model.addAttribute("message", "Invalid Token");
-            return "message";
         }
         return "account/reset_password_form";
     }

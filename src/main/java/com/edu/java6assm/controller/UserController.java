@@ -6,6 +6,8 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +29,14 @@ public class UserController {
     public String form(Model model) {
         model.addAttribute("user", new User());
         return "account/signup";
+    }
+
+    @GetMapping("/account/editprofile")
+    public String editprofile(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Optional<User> loggedinUser = userService.findByUsername(auth.getName());
+        model.addAttribute("user", loggedinUser.orElse(new User()));
+        return "account/edit_profile";
     }
 
     @PostMapping("/account/register")

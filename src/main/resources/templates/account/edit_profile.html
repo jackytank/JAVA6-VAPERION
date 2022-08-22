@@ -11,55 +11,72 @@
 </head>
 
 <body>
-    <section class="vh-100 bg-light">
-        <div class="container py-2 h-100">
-            <div class="row d-flex justify-content-center align-content-start align-items-center h-100">
+    <section class="bg-white" ng-controller="user-ctrl">
+        <div class="container py-2">
+            <div class="row d-flex justify-content-center align-content-start align-items-center">
                 <div class="col-12 col-md-8 col-lg-8 col-xl-6">
-                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                        <div class="card-body p-4">
-
-                            <form th:action="@{/account/register}" th:object="${user}" method="post" class="needs-validation" novalidate="true"
-                                style="max-width: 600px; margin: 0 auto;">
-                                <div class="m-3">
-                                    <h3 class="mb-5">Edit Profile</h3>
-                                    <div class="mb-4 row">
-                                        <label class="form-label">Username: </label>
-                                        <div class="">
-                                            <input type="text" th:field="*{username}" class="form-control" required="required" />
+                    <div class="card rounded-4 shadow">
+                        <div class="card-body p-md-5 p-sm-2">
+                            <h2 class="fw-bold mb-4">Edit profile</h2>
+                            <form th:object="${user}" class="needs-validation" novalidate="true">
+                                <div class="">
+                                    <input type="hidden" ng-model="form.id" th:field="*{id}">
+                                    <div class="mb-3">
+                                        <label for="image" class="mb-2">
+                                            <img ng-src="{{ (form.image_url.startsWith('upload')?'/upload/images/':'/assets/images/') + (form.image_url || 'default-user.jpg') }}"
+                                                style="max-width: 20vw; max-height: 20vh;" alt="User image">
+                                        </label>
+                                        <input ng-model="form.image_url" type="file" class="form-control form-control-sm" id="image"
+                                            onchange="angular.element(this).scope().imageChanged(this.files)">
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input ng-model="form.username" th:field="*{username}" type="text" id="floatingUsername"
+                                                class="form-control rounded-3" required="required" placeholder="Username" />
+                                            <label for="floatingUsername">Username</label>
                                             <div class="invalid-feedback">Please enter a valid username.</div>
                                         </div>
                                     </div>
-                                    <div class="mb-4 row">
-                                        <label class="form-label">E-mail: </label>
-                                        <div class="">
-                                            <input type="email" th:field="*{email}" class="form-control" required="required" />
+                                    <div class="mb-3  ">
+                                        <div class="form-floating">
+                                            <input ng-model="form.email" type="email" th:field="*{email}" id="floatingEmail" class="form-control rounded-3"
+                                                required="required" placeholder="name@example.com" />
+                                            <label for="floatingEmail">E-mail: </label>
                                             <div class="invalid-feedback">Please enter a valid email.</div>
                                         </div>
                                     </div>
+                                    <div class="mb-3  ">
+                                        <div class="form-floating">
+                                            <input ng-model="form.phone" type="tel" th:field="*{phone}" id="floatingPhone" class="form-control rounded-3"
+                                                required="required" placeholder="0xxxxxxxxx" pattern="(\+84|0)\d{9,10}" />
+                                            <label for="floatingPhone">Phone: </label>
+                                            <div class="invalid-feedback">Please enter a valid phone.</div>
+                                        </div>
+                                    </div>
                                     <hr>
-                                    <div class="mb-4 row">
-                                        <label class="form-label">Password: </label>
-                                        <div>
-                                            <input type="password" id="password" th:field="*{password}" class="form-control" required="required" minlength="6"
-                                                maxlength="10" />
+                                    <div class="mb-3  ">
+                                        <div class="form-floating">
+                                            <input ng-model="form.password" type="password" id="password" th:field="*{password}" class="form-control  rounded-3"
+                                                required="required" minlength="6" maxlength="10" placeholder="Password" />
+                                            <label for="password">Password: </label>
                                             <div class="invalid-feedback">Please enter a valid password.</div>
                                         </div>
                                     </div>
-                                    <div class="mb-4 row">
-                                        <label class="form-label">Retype: </label>
-                                        <div class="">
-                                            <input type="password" class="form-control" required="required" minlength="6" maxlength="10"
-                                                oninput="checkPasswordMatch(this);" />
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input type="password" id="floatingRetype" class="form-control  rounded-3" required="required" minlength="6"
+                                                maxlength="10" oninput="checkPasswordMatch(this);" placeholder="Retype" />
+                                            <label for="floatingRetype">Retype: </label>
                                             <div class="invalid-feedback">Please enter a valid retype.</div>
                                         </div>
                                     </div>
                                     <div class="d-grid gap-2 mb-2">
-                                        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                                        <button ng-disabled="myform.$invalid" ng-click="update()" type="submit" id="submit"
+                                            class="btn btn-lg rounded-3 btn-primary">Update</button>
                                     </div>
-                                    <h4 class="text-danger mb-2">[(${message})]</h4>
+                                    <h4 class="text-danger mb-2">{{message}}</h4>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>

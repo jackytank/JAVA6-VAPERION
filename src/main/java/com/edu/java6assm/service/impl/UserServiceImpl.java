@@ -106,7 +106,8 @@ public class UserServiceImpl implements UserService {
         user.setProvider(AuthProvider.DATABASE);
         User savedUser = userRepo.save(user);
 
-        // set role CUST (Customer) to user vì nếu là người dùng bình thường đăng ký thì chỉ set
+        // set role CUST (Customer) to user vì nếu là người dùng bình thường đăng ký thì
+        // chỉ set
         // role là CUST
         Optional<Role> role = roleRepo.findById("CUST");
         userRoleRepo.save(new UserRole(user, role.get()));
@@ -142,9 +143,10 @@ public class UserServiceImpl implements UserService {
     public User update(User user) {
         Optional<User> findUser = userRepo.findByUsername(user.getUsername());
         if (findUser.isPresent()) {
-            if (!findUser.get().getPassword().equals(user.getPassword())) {
-                String encodedPassword = encoder.encode(user.getPassword());
-                user.setPassword(encodedPassword);
+            if (encoder.matches(user.getPassword(), findUser.get().getPassword())) {
+                user.setPassword(encoder.encode(user.getPassword()));
+            } else if (!encoder.matches(user.getPassword(), findUser.get().getPassword())) {
+                user.setPassword(encoder.encode(user.getPassword()));
             } else {
 
             }
