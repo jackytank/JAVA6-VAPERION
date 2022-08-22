@@ -3,10 +3,13 @@
 A vape store website made with Spring Boot, there is 3 roles: CUST, DIRE, and STAF. CUST can only visit homepage while STAF and ADMIN can visit both homepage and admin page. User can sign in and sign up with normal account or with OAuth2 account (GG,FB), edit profile, see orders history, reset password, and checkout, search & sort products. DIRE and STAF can visit admin page, CRUD User, Product, Order, Category (to be added), and have authorizing privilege, export data to excel, pdf, csv, upload excel, pdf, csv to db (to be added)
 
 Stack used:
- * Front-end:
-  - AngularJS, Bootstrap 5.2, Thymeleaf, JQuery
- * Back-end:
-  - Spring Boot, Spring Security, OAuth2, SQL Server 2019, 
+  *	Stack:
+    -	Frontend: AngularJS, Thymeleaf, Bootstrap 5.2, JQuery
+    -	Backend: Spring Boot, Spring Data JPA, Spring Security, OAuth2
+    -	Database: SQL Server 2019
+  *	Software:
+    -	Visual Studio Code + Spring Boot extension
+    -	[Adoptium Temurin JDK 17](https://adoptium.net/)
 
 ## Installation
 1. Clone this repo, create database by running the db.sql script inside db folder
