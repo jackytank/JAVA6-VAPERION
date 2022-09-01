@@ -47,6 +47,16 @@ Stack used:
     spring.security.oauth2.client.registration.facebook.client-secret=<your facebook client secret>
     spring.security.oauth2.client.registration.facebook.scope=email,public_profile
   ```
+  - Create a Paypal Sandbox account and fill your business account id and secret here (tips: when checkout use your sandbox personal account email and password)
+  ```
+    paypal.mode = sandbox
+    paypal.client.id=<your sandbox business account id>
+    paypal.client.secret=<your sandbox business account secret>
+  ```
+  - Subscribe to [apilayer.com's Exchange Rate Data API](https://apilayer.com/marketplace/exchangerates_data-api) and fill your api key here
+  ```
+    apilayer.apikey=<your api key>
+  ```
 
 ## Visuals - Demo
 
