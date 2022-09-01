@@ -3,33 +3,59 @@
 
 <body>
     <main>
+        <!-- <div th:replace="~{cart/view :: shopping_cart}"></div> -->
+        <div class="card shadow">
+            <form th:action="@{/pay}" method="post" id="purchase-form">
+                <div class="card-header">
+                    ORDER PURCHASING
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="mb-3 col-sm-6">
+                            <div>PURCHASER: </div>
+                            <div class="form-control" id="login-username">[[${#request.remoteUser}]]</div>
+                        </div>
+                        <div class="mb-3 col-sm-6">
+                            <div>Order Date: </div>
+                            <div class="form-control">{{order.create_date | date:'dd-MM-yyyy'}}</div>
+                        </div>
+                        <div class="mb-3 col-sm-6">
+                            <div>Total: </div>
+                            <input type="text" readonly class="form-control shadow-none" name="total" value="{{cart.amount | number:0}}" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-sm-12">
+                            <div>Shipping address:</div>
+                            <textarea ng-model="order.address" class="form-control" rows="6"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="mb-1">Payment method:</div>
+                        <div class="col-md-6 mb-2">
+                            <div class="d-grid gap-2">
+                                <input type="radio" ng-model="order.payment_method" class="btn-check" value="cod" name="payment_method" id="paymentMethod1"
+                                    autocomplete="off" checked>
+                                <label class="btn btn-outline-primary shadow-none" for="paymentMethod1"><i class="fa-solid fa-truck-fast fa-xl"></i> Cash On
+                                    Delivery (+20.000đ)</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="d-grid gap-2 pretty p-icon p-round">
+                                <!-- <button type="submit" class="btn btn-outline-primary"><i class="fa-brands fa-cc-paypal fa-xl"></i> Pay now</button> -->
 
-        <div th:replace="~{cart/view :: shopping_cart}"></div>
-        <div class="card">
-            <div class="card-header">
-                ORDER PURCHASING
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="mb-3 col-sm-6">
-                        <div>PURCHASER: </div>
-                        <div class="form-control" id="login-username">[[${#request.remoteUser}]]</div>
-                    </div>
-                    <div class="mb-3 col-sm-6">
-                        <div>Order Date: </div>
-                        <div class="form-control">{{order.create_date | date:'dd-MM-yyyy'}}</div>
+                                <input type="radio" ng-model="order.payment_method" class="btn-check" value="paypal" name="payment_method" id="paymentMethod2"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-primary shadow-none" for="paymentMethod2"><i class="fa-brands fa-cc-paypal fa-xl"></i> Pay
+                                    now</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="mb-2 col-sm-12">
-                        <div>Shipping address</div>
-                        <textarea ng-model="order.address" class="form-control" rows="6"></textarea>
-                    </div>
+                <div class="card-footer">
+                    <button ng-click="order.purchase()" type="button" class="btn btn-secondary">Purchase</button>
                 </div>
-            </div>
-            <div class="card-footer">
-                <button ng-click="order.purchase()" class="btn btn-success">Purchase</button>
-            </div>
+            </form>
         </div>
 
     </main>

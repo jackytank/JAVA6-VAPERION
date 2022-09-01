@@ -5,14 +5,6 @@ angular.module("shopping-cart-app").controller("shopping-cart-ctrl", shoppingCar
 function shoppingCartCtrl($scope, $http) {
     $scope.cart = {
         items: [],
-        stepDown(el) {
-            if (el > 0) {
-                el = el - 1;
-            } else {
-                el = 1;
-            }
-        },
-
         add(id) {
             let item = this.items.find(item => item.id == id);
             if (item) {
@@ -64,7 +56,10 @@ function shoppingCartCtrl($scope, $http) {
 
     $scope.order = {
         create_date: new Date(),
+        total: $scope.cart.amount,
         address: "",
+        payment_method: "",
+        order_status: "processing",
         user: {
             username: $('#login-username').text()
         },
@@ -79,15 +74,28 @@ function shoppingCartCtrl($scope, $http) {
         },
         purchase() {
             let order = angular.copy(this);
-            console.log(order);
-            $http.post('/rest/orders', order).then(res => {
-                alert("Order successfully created");
-                $scope.cart.clear();
-                location.href = "/order/detail/" + res.data.id;
-            }).catch(err => {
-                alert("Error creating order!");
-                console.log(err);
-            });
+            if (order.payment_method === "paypal") {
+                document.getElementById('purchase-form').submit();
+            } else if (order.payment_method === "cod") {
+                order.total += 20000;
+                console.log(order);
+                $http.post('/rest/orders', order).then(res => {
+                    alert("Order successfully created");
+                    $scope.cart.clear();
+                    location.href = "/order/detail/" + res.data.id;
+                }).catch(err => {
+                    alert("Error creating order or your cart is empty! Please try again!");
+                    console.log(err);
+                });
+            }
+            // $http.post('/rest/orders', order).then(res => {
+            //     alert("Order successfully created");
+            //     $scope.cart.clear();
+            //     location.href = "/order/detail/" + res.data.id;
+            // }).catch(err => {
+            //     alert("Error creating order!");
+            //     console.log(err);
+            // });
         }
     };
     // console.log($scope.order);

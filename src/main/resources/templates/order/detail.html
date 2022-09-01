@@ -18,11 +18,23 @@
                         <input type="text" th:field="*{user.username}" class="form-control" th:readonly="readonly">
                     </div>
                     <div class="mb-2 col-sm-4">
-                        <div>Purchase date::</div>
+                        <div>Purchase date:</div>
                         <input type="text" th:field="*{create_date}" class="form-control" th:readonly="readonly">
                     </div>
                     <div class="mb-2 col-sm-4">
-                        <div>Shipping address::</div>
+                        <div>Payment Method:</div>
+                        <input type="text" th:field="*{payment_method}" class="form-control" th:readonly="readonly">
+                    </div>
+                    <div class="mb-2 col-sm-4">
+                        <div>Total:</div>
+                        <input type="text" th:field="*{total}" class="form-control" th:readonly="readonly">
+                    </div>
+                    <div class="mb-2 col-sm-4">
+                        <div>Order Status:</div>
+                        <input type="text" th:field="*{order_status}" class="form-control" th:readonly="readonly">
+                    </div>
+                    <div class="mb-2 col-sm-4">
+                        <div>Shipping address:</div>
                         <textarea th:field="*{address}" class="form-control" th:readonly="readonly"></textarea>
                     </div>
                 </div>
@@ -50,7 +62,7 @@
                                 <td>[[*{product.name}]]</td>
                                 <td>[[*{#numbers.formatDecimal(price,0,'COMMA',2,'POINT')}]]</td>
                                 <td>[[*{quantity}]]</td>
-                                <td>[[*{#numbers.formatDecimal(price*quantity,0,'COMMA',2,'POINT')}]]</td>
+                                <td><sup>đ</sup>[[*{#numbers.formatDecimal(price*quantity,0,'COMMA',2,'POINT')}]]</td>
                             </tr>
                         </tbody>
                     </table>

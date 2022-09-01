@@ -15,6 +15,9 @@
                                 <th>No.</th>
                                 <th>Order No.</th>
                                 <th>Order Date</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Payment Method</th>
                                 <th>Shipping Address</th>
                                 <th></th>
                             </tr>
@@ -24,6 +27,9 @@
                                 <td>[[${state.index}]]</td>
                                 <td>[[${order.id}]]</td>
                                 <td>[[${order.create_date}]]</td>
+                                <td>[[${order.total}]]</td>
+                                <td>[[${order.order_status}]]</td>
+                                <td>[[${order.payment_method}]]</td>
                                 <td>[[${order.address}]]</td>
                                 <td>
                                     <a th:href="@{|/order/detail/${order.id}|}" class="btn btn-secondary">

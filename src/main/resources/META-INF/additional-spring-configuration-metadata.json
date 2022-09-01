@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "paypal.mode",
+    "type": "java.lang.String",
+    "description": "A description for 'paypal.mode'"
+  },
+  {
+    "name": "paypal.client.id",
+    "type": "java.lang.String",
+    "description": "A description for 'paypal.client.id'"
+  },
+  {
+    "name": "paypal.client.secret",
+    "type": "java.lang.String",
+    "description": "A description for 'paypal.client.secret'"
+  },
+  {
+    "name": "apilayer.apikey",
+    "type": "java.lang.String",
+    "description": "A description for 'apilayer.apikey'"
+  }
+]}

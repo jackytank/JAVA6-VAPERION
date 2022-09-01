@@ -34,6 +34,9 @@ public class OrderRestController {
 
     @PostMapping("/rest/orders")
     public ResponseEntity<Order> create(@RequestBody JsonNode orderData) {
+        if (orderData.get("total").asDouble() == 0) {
+            return ResponseEntity.badRequest().build();
+        }
         return ResponseEntity.ok(orderService.create(orderData));
     }
 
@@ -49,7 +52,6 @@ public class OrderRestController {
         } catch (NoSuchElementException e) {
             return ResponseEntity.notFound().build();
         }
-
     }
 
     @GetMapping("/rest/orders/detail/{orderId}")

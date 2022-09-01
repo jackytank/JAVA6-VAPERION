@@ -10,9 +10,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class HomeController {
 
     @GetMapping({ "/", "/home/index" })
-    public String home(ModelMap model, @RequestParam(required = false) String message, RedirectAttributes redirAttrs) {
+    public String home(ModelMap model, @RequestParam(required = false) String message,
+            @RequestParam(required = false) Boolean isPaymentSuccess,
+            RedirectAttributes redirAttrs) {
         redirAttrs.addFlashAttribute("message", message);
-        model.addAttribute("message", message);
+        redirAttrs.addFlashAttribute("isPaymentSuccess", isPaymentSuccess);
         return "redirect:/product/list";
     }
 

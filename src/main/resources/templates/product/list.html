@@ -56,7 +56,11 @@
         </div>
 
         <script th:inline="javascript">
-            let message = /*[[${ message }]]*/ null
+            let message = /*[[${ message }]]*/ null;
+            let isPaymentSuccess = /*[[${ isPaymentSuccess }]]*/ false;
+            if (isPaymentSuccess) {
+                localStorage.removeItem('cart');
+            }
             if (message != null) {
                 alert(message);
             }
