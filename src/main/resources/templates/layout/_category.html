@@ -1,4 +1,4 @@
-<div class="card mb-3">
+<!-- <div class="card mb-3">
     <div class="card-header">
         <b>Category</b>
     </div>
@@ -12,5 +12,35 @@
     </div>
     <div class="list-group">
         <button ng-repeat="ca in cates" ng-click="filterProductByCategory(ca.id)" class="list-group-item list-group-item-action">{{ca.name}}</button>
+    </div>
+</div> -->
+
+<div class="accordion mb-3" id="accordionFlushExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                aria-controls="flush-collapseOne">
+                Category
+            </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="list-group">
+                <button ng-repeat="ca in cates" ng-click="filterProductByCategory(ca.id)" class="list-group-item list-group-item-action">{{ca.name}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                aria-controls="flush-collapseTwo">
+                Price range
+            </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div class="list-group">
+                <button ng-repeat="ca in cates" ng-click="filterProductByCategory(ca.id)" class="list-group-item list-group-item-action">{{ca.name}}
+                </button>
+            </div>
+        </div>
     </div>
 </div>
