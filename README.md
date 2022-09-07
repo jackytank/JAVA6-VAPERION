@@ -1,7 +1,7 @@
 ![dxcvape-logo](https://user-images.githubusercontent.com/52403567/185983183-df1c7a53-4281-41a8-a288-9bac0eb37b68.png) 
 ## TXT Vaperion - Online vape store
 
-A vape store website made with Spring Boot, there is 3 roles: CUST, DIRE, and STAF. CUST can only visit homepage while STAF and ADMIN can visit both homepage and admin page. User can sign in and sign up with normal account or with OAuth2 account (GG,FB), edit profile, see orders history, reset password, and checkout, search & sort products. DIRE and STAF can visit admin page, CRUD User, Product, Order, Category (to be added), and have authorizing privilege, export data to excel, pdf, csv, upload excel, pdf, csv to db (to be added)
+A vape store website made with Spring Boot, payment integration with Paypal Sandbox, there is 3 roles: CUST, DIRE, and STAF. CUST can only visit homepage while STAF and ADMIN can visit both homepage and admin page. User can sign in and sign up with normal account or with OAuth2 account (GG,FB), edit profile, see orders history, reset password, and checkout, search & sort products. DIRE and STAF can visit admin page, CRUD User, Product, Order, Category (to be added), and have authorizing privilege, export data to excel, pdf, csv, upload excel, pdf, csv to db (to be added)
 
 Stack used:
   *	Stack:
